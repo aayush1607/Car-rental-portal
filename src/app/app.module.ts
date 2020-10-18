@@ -18,6 +18,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CreateCarComponent } from './create-car/create-car.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { ManageResrevationsComponent } from './manage-resrevations/manage-resrevations.component';
+import { MatTableModule } from '@angular/material/table';
+import {  MatPaginatorModule } from '@angular/material/paginator';
+import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,9 +35,17 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
+    CreateCarComponent,
+    MainPageComponent,
+    DatepickerComponent,
+    AdminUsersComponent,
+    ManageResrevationsComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatSidenavModule,
     MatListModule,
     BrowserAnimationsModule,
@@ -42,13 +59,19 @@ import { NavbarComponent } from './navbar/navbar.component';
     RouterModule.forRoot(
       [
         {path:'',component:LoginComponent},
-        {path:'register',component:RegisterComponent}
+        {path:'register',component:RegisterComponent},
+        {path:'main',component:MainPageComponent},
+        {path:'create-car',component:CreateCarComponent},
+        {path:'users',component:AdminUsersComponent},
+        {path: 'manage', component: ManageResrevationsComponent},
+
+
       ]
     )
 
 
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
