@@ -18,11 +18,13 @@ export class RegisterComponent implements OnInit {
 
 
   }
-
+  
   onRegister(form: NgForm){
     const email=form.value.email;
     const pass=form.value.password;
-    this.userservice.createUser(email,pass).subscribe(console.log('okk'));
+    this.userservice.createUser(email,pass).subscribe(res=>{
+      console.log(res);
+    });
   }
 
 }

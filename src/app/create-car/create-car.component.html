@@ -71,7 +71,7 @@
 
 
 
-                    <input #fileinput style="display: none;" type="file">
+                    <input #fileinput style="display: none;" type="file" (change)="onFileSelected($event)">
                     <button matInput class="btn btn-outline-success" type="button" (click)="fileinput.click()">
                         Choose Image
                     </button>
