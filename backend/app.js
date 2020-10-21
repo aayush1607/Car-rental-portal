@@ -1,5 +1,5 @@
 const express=require('express');
-
+const path = require('path');
 const app=express();
 const cors=require('cors');
 const bodyparser=require('body-parser');
@@ -17,6 +17,7 @@ mongoose.connect(uri, {useNewUrlParser: true}).then(() => {
 
 app.use(cors());
 app.use(bodyparser.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 

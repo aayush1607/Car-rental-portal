@@ -1,7 +1,23 @@
-<div style="height: 100vh; overflow: hidden;">
-    
-    <p>datepicker works!</p>
-    </div>
-    
+<div class="row">
+    <h1 align="center">Please give the Dates</h1>
+</div>
 
+<div class="row">
+
+    <div style="margin: auto">
+        <form (submit)="onSearch(dateForm)" #dateForm="ngForm">
+            <input
+            type="text"
+            bsDaterangepicker
+            ngModel
+            placeholder="Please give your Dates"
+            class="form-control"
+            name="dateInput"
+            [bsConfig]="{rangeInputFormat: 'DD-MM-YYYY', containerClass: 'theme-dark-blue'}"
+            >
+        <button type="submit" class="btn btn-outline-success btn-block">Search</button>
+
+        </form>
+    </div>
+</div>
 

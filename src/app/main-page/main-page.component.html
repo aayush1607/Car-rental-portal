@@ -1,4 +1,50 @@
-<div style="height: 100vh; overflow: hidden;">
-    <p>main-page works!</p>
-</div>
+<div style="height: 100vh ">
+    <div class="row">
+        <div style="margin: auto">
+            <app-date-picker></app-date-picker>
+        </div>
+    </div>
+    </div>
 
+
+    <div class="row top-row">
+
+        <ng-container *ngFor="let car of cars; let i = index;">
+    
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+    
+                           <div class="col-md-3">
+                               <p class="branding">{{car?.brand}}</p>
+                           </div>
+    
+                            <div class="col-md-3">
+                                <p align="center" class="model">{{car?.model}}</p><br>
+                                <img src="{{path}}model.png" class="model1" align="center" >
+                            </div>
+    
+                            <div class="col-md-3">
+                                <p align="center" class="model">{{car?.power}}</p><br>
+                                <img src="{{path}}power.png" class="image_power" align="center" >
+                            </div>
+    
+                            <div class="col-md-3">
+                                <p align="center" class="model">{{car?.seats}}</p><br>
+                                <img src="{{path}}door.png" class="doors" align="center" >
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img class="temp" src="{{car?.imgUrl}}" >
+                    </div>
+                  <div class="footer">
+                      <button (click)="onRent(car)" class="btn btn-outline-success btn-block">Rent this Car</button>
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="(i+1) % 2 === 0" class="w-100 "></div>
+        </ng-container>
+    
+    </div>

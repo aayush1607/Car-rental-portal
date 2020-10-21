@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CreateCarComponent } from './create-car/create-car.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { MainPageComponent, DialogOverviewExampleDialog } from './main-page/main-page.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { ManageResrevationsComponent } from './manage-resrevations/manage-resrevations.component';
@@ -27,6 +27,9 @@ import { MatTableModule } from '@angular/material/table';
 import {  MatPaginatorModule } from '@angular/material/paginator';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminService } from './admin.service';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -40,10 +43,13 @@ import { HttpClientModule } from '@angular/common/http';
     DatepickerComponent,
     AdminUsersComponent,
     ManageResrevationsComponent,
-  ],
+    DialogOverviewExampleDialog
+  ], entryComponents: [DialogOverviewExampleDialog],
   imports: [
     HttpClientModule,
+    BsDatepickerModule.forRoot(),
     BrowserModule,
+    MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
     MatSidenavModule,
@@ -71,7 +77,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
   ],
-  providers: [UserService,LoginComponent],
+  providers: [UserService,LoginComponent, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

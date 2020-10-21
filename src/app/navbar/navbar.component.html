@@ -1,4 +1,4 @@
-<mat-toolbar color="accent" class="sticky-top">
+<!-- <mat-toolbar color="accent" class="sticky-top">
 
     <mat-toolbar-row>
         <button mat-icon-button (click)="sidenav.toggle()">
@@ -9,12 +9,17 @@
         <span>CAR RENTAL</span>
             <span class="spacer"></span>
         <div>
-            <a routerLink="/" mat-button>
-                <mat-icon>power_settings_new</mat-icon>
-                Login</a>
-            <a routerLink="/register" mat-button>
-                <mat-icon>fingerprint</mat-icon>
-                Register</a>
+           
+
+                <a *ngIf="auth === false" routerLink="/" mat-button>
+                    <mat-icon>power_settings_new</mat-icon>
+                    Login</a>
+                  <a *ngIf="auth === false" routerLink="/register" mat-button>
+                    <mat-icon>fingerprint</mat-icon>
+                    Register</a>
+                  <a *ngIf="auth === true" (click)="onLogout()" routerLink="/" mat-button>
+                    <mat-icon>fingerprint</mat-icon>
+                    Logout</a>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
@@ -24,29 +29,111 @@
 
     <mat-sidenav #sidenav style="height: calc(100vh-50px);">
         <mat-nav-list>
-            <a mat-list-item routerLink="/manage">
+            <a (click)="sidenav.toggle()" mat-list-item routerLink="/manage">
                 
                 <mat-icon>calendar_today</mat-icon>
                 Manage Reservations
             </a>
-            <a mat-list-item routerLink="/create-car">
+            <a (click)="sidenav.toggle()" mat-list-item routerLink="/create-car">
                 
                 <mat-icon>drive_eta</mat-icon>
                 Add a Car
             </a>
-            <a mat-list-item routerLink="/users">
+            <a (click)="sidenav.toggle()"  mat-list-item routerLink="/users">
                 
                 <mat-icon>person_add_disabled</mat-icon>
                 My Users
             </a>
-            <a mat-list-item routerLink="/main">
+            <a (click)="sidenav.toggle()" mat-list-item routerLink="/main">
                 
                 <mat-icon>home</mat-icon>
                 Main Page
+            </a>
+
+           
+    
+            <a (click)="sidenav.toggle()" mat-list-item>
+              <mat-icon>close</mat-icon> Close
             </a>
 
         </mat-nav-list>
     </mat-sidenav>
 
     <router-outlet></router-outlet>
+</mat-sidenav-container> -->
+
+<mat-toolbar color="accent" class="sticky-top">
+  <mat-toolbar-row>
+
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+<span>Rent a Car</span>
+    <span class="spacer"></span>
+<div>
+  <a *ngIf="auth === false" routerLink="/" mat-button>
+    <mat-icon>power_settings_new</mat-icon>
+    Login</a>
+  <a *ngIf="auth === false" routerLink="/register" mat-button>
+    <mat-icon>fingerprint</mat-icon>
+    Register</a>
+  <a *ngIf="auth === true" (click)="onLogout()" routerLink="/" mat-button>
+    <mat-icon>fingerprint</mat-icon>
+    Logout</a>
+</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+
+
+      <mat-nav-list>
+
+        <ng-container *ngIf="admin === 1">
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/manage">
+          <mat-icon>calendar_today</mat-icon>
+          Manage Reservations
+        </a>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/create-car">
+          <mat-icon>drive_eta</mat-icon>
+          Add a Car
+        </a>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/users">
+          <mat-icon>person_add_disabled</mat-icon>
+          My Users
+        </a>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/main">
+          <mat-icon>home</mat-icon>
+          Main Page
+        </a>
+        </ng-container>
+
+        <ng-container *ngIf="admin === 0">
+
+            <a mat-list-item routerLink="/main">
+              <mat-icon>home</mat-icon>
+              Main Page
+            </a>
+
+        </ng-container>
+
+        <a (click)="sidenav.toggle()" mat-list-item>
+          <mat-icon>close</mat-icon> Close
+        </a>
+
+      </mat-nav-list>
+
+
+
+
+
+  </mat-sidenav>
+
+  <router-outlet></router-outlet>
+
 </mat-sidenav-container>
